@@ -1,38 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Lufinix</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandufinix</title>
+
 <style>
 body {
-background:#0b1120;
-color:white;
-font-family:Arial;
-text-align:center;
-padding-top:60px;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0b1120, #111827);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
-a {
-display:block;
-margin:12px auto;
-padding:14px;
-width:260px;
-background:#3b82f6;
-color:white;
-text-decoration:none;
-border-radius:10px;
-font-weight:bold;
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 20px;
 }
-a:hover { background:#1e40af; }
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #9ca3af;
+  margin-bottom: 30px;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background: #1f2933;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+  border: 1px solid #374151;
+}
+
+.link:hover {
+  background: #2563eb;
+  transform: scale(1.02);
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #9ca3af;
+}
 </style>
 </head>
 <body>
 
-<h1>Lufinix</h1>
-<p>Official Creator Links</p>
+<div class="container">
 
-<a href="https://youtube.com/yourchannel">YouTube</a>
-<a href="https://instagram.com/yourid">Instagram</a>
-<a href="https://yourdonate.com">Donate</a>
+  <div class="logo">Nandufinix</div>
+  <div class="subtitle">Official Creator Links</div>
+
+  <a class="link" href="https://youtube.com/yourchannel" target="_blank">📺 YouTube</a>
+  <a class="link" href="https://instagram.com/yourid" target="_blank">📸 Instagram</a>
+  <a class="link" href="https://stpz.in/nandu" target="_blank">💖 Donate (Streamtipz)</a>
+  <a class="link" href="https://discord.gg/yourlink" target="_blank">💬 Discord</a>
+
+  <div class="footer">
+    © 2026 Nandufinix • All Rights Reserved
+  </div>
+
+</div>
 
 </body>
 </html>
