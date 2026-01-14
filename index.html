@@ -48,10 +48,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 42px;
-  font-weight: bold;
   box-shadow: 0 0 25px rgba(37,99,235,0.6);
+  overflow: hidden;
 }
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .logo {
   font-size: 34px;
@@ -115,6 +121,40 @@ body {
   color: #9ca3af;
 }
 
+.announcement {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(37,99,235,0.6);
+}
+
+.announcement a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.announcement button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
+  
 /* ===== DESKTOP MAGIC ===== */
 @media (min-width: 768px) {
 
@@ -131,12 +171,20 @@ body {
 </style>
 </head>
 <body>
+    <div id="announcement" class="announcement">
+  <span>🎁 Giveaway Live — Click to Join</span>
+  <a href="https://instagram.com/yourreel" target="_blank">Join</a>
+  <button onclick="closeAnnouncement()">✖</button>
+</div>
 
 <div class="container">
 
-  <div class="avatar">NF</div>
+  <div class="avatar">
+  <img src="profile.jpg" alt="Nandufinix">
+</div>
 
-  <div class="logo">Nandufinix</div>
+
+  <div class="logo">NanduFinix</div>
   <div class="subtitle">MLBB Streamer • Mobile Legends Bang Bang</div>
   <div class="links-grid">
   <a class="link" href="https://www.youtube.com/@NanduFinix" target="_blank">📺 YouTube Stream</a>
@@ -195,4 +243,18 @@ body {
 </div>
 
 </body>
+
+  <script>
+function closeAnnouncement() {
+  document.getElementById("announcement").style.display = "none";
+  localStorage.setItem("announcementClosed", "yes");
+}
+
+if (localStorage.getItem("announcementClosed") === "yes") {
+  document.getElementById("announcement").style.display = "none";
+}
+</script>
+
+
+
 </html>
