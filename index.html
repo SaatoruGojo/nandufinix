@@ -171,11 +171,12 @@ body {
 </style>
 </head>
 <body>
-    <div id="announcement" class="announcement">
+<div id="announcement" class="announcement">
   <span>🎁 Giveaway Live — Click to Join</span>
-  <a href="https://instagram.com/yourreel" target="_blank">Join</a>
+  <a id="giveawayLink" href="#" target="_blank">Join</a>
   <button onclick="closeAnnouncement()">✖</button>
 </div>
+
 
 <div class="container">
 
@@ -244,16 +245,25 @@ body {
 
 </body>
 
-  <script>
-function closeAnnouncement() {
-  document.getElementById("announcement").style.display = "none";
-  localStorage.setItem("announcementClosed", "yes");
+ <script>
+const giveawayActive = false; // 👈 change only this
+const giveawayURL = "https://instagram.com/yourreel";
+
+const announcement = document.getElementById("announcement");
+const giveawayLink = document.getElementById("giveawayLink");
+
+if (!giveawayActive || localStorage.getItem("announcementClosed") === "yes") {
+  announcement.style.display = "none";
+} else {
+  giveawayLink.href = giveawayURL;
 }
 
-if (localStorage.getItem("announcementClosed") === "yes") {
-  document.getElementById("announcement").style.display = "none";
+function closeAnnouncement() {
+  announcement.style.display = "none";
+  localStorage.setItem("announcementClosed", "yes");
 }
 </script>
+
 
 
 
