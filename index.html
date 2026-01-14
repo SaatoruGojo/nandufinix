@@ -32,7 +32,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 420px;
+  max-width: 900px;
   text-align: center;
   padding: 30px 20px;
 }
@@ -55,7 +55,6 @@ body {
   font-size: 34px;
   font-weight: bold;
   margin-top: 15px;
-  letter-spacing: 1px;
 }
 
 .subtitle {
@@ -63,19 +62,22 @@ body {
   margin-bottom: 30px;
 }
 
+.links-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
 .link {
-  display: block;
   text-decoration: none;
   color: white;
   background: linear-gradient(135deg, #1e293b, #020617);
-  margin: 14px 0;
   padding: 16px;
   border-radius: 14px;
   font-size: 18px;
   font-weight: 600;
   border: 1px solid #334155;
   transition: 0.3s;
-  box-shadow: 0 0 0 rgba(37,99,235,0);
 }
 
 .link:hover {
@@ -110,6 +112,20 @@ body {
   font-size: 13px;
   color: #9ca3af;
 }
+
+/* ===== DESKTOP MAGIC ===== */
+@media (min-width: 768px) {
+
+  .links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reels {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
 </style>
 </head>
 <body>
@@ -120,11 +136,13 @@ body {
 
   <div class="logo">Nandufinix</div>
   <div class="subtitle">MLBB Streamer • Mobile Legends Bang Bang</div>
-
+  <div class="links-grid">
   <a class="link" href="https://www.youtube.com/@NanduFinix" target="_blank">📺 YouTube Stream</a>
   <a class="link" href="https://www.instagram.com/nanduvibe" target="_blank">📸 Instagram</a>
   <a class="link" href="https://stpz.in/nandu" target="_blank">💖 Donate (TTS Enabled)</a>
   <a class="link" href="https://discord.gg/fm7QsEKTMC" target="_blank">💬 Join Discord</a>
+
+</div>
 
   <div class="section-title">🔥 Latest Reels</div>
 
