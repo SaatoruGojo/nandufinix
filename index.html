@@ -250,7 +250,7 @@ body {
   opacity: 0.8;
 }
 
-.floating-supporters {
+#floating-supporters {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -258,43 +258,15 @@ body {
   overflow: hidden;
 }
 
-.floating-supporters span {
+.floating-name {
   position: absolute;
+  top: -50px;
   font-size: 14px;
-  opacity: 0.15;
-  animation: floatAround linear infinite;
+  opacity: 0.18;
   white-space: nowrap;
+  animation-timing-function: linear;
 }
 
-.floating-supporters span:nth-child(1) {
-  top: 10%;
-  left: -20%;
-  animation-duration: 25s;
-}
-
-.floating-supporters span:nth-child(2) {
-  top: 30%;
-  left: -30%;
-  animation-duration: 30s;
-}
-
-.floating-supporters span:nth-child(3) {
-  top: 55%;
-  left: -25%;
-  animation-duration: 28s;
-}
-
-.floating-supporters span:nth-child(4) {
-  top: 70%;
-  left: -35%;
-  animation-duration: 35s;
-}
-
-.floating-supporters span:nth-child(5) {
-  top: 85%;
-  left: -40%;
-  animation-duration: 40s;
-}
 
 @keyframes floatAround {
   from {
@@ -338,14 +310,8 @@ body {
 
 </head>
 <body>
-  <div class="floating-supporters">
-  <span>Pip 💖</span>
-  <span>Aditya 🔥</span>
-  <span>Rohit 👑</span>
-  <span>duryodhana ❤️</span>
-  <span>Chirag ⚡</span>
+<div id="floating-supporters"></div>
 
-  </div>
 
 <div id="announcement" class="announcement">
   <span>🎁 Giveaway Live — Click to Join</span>
@@ -469,6 +435,52 @@ body {
   </div>
 
 </div>
+<script>
+const supporters = [
+  "PIP 💖",
+  "Dhuryodhana 🔥",
+  "Aditya 👑",
+  "Chirag ❤️",
+  "Rohit ⚡"
+];
+
+const container = document.getElementById("floating-supporters");
+
+function createFloatingName() {
+  const name = document.createElement("div");
+  name.className = "floating-name";
+  name.innerText = supporters[Math.floor(Math.random() * supporters.length)];
+
+  // Random start position
+  const startX = Math.random() * window.innerWidth;
+  name.style.left = startX + "px";
+
+  // Random animation duration
+  const duration = 20 + Math.random() * 20; // 20–40s
+  const drift = (Math.random() - 0.5) * 200; // left/right drift
+
+  name.animate(
+    [
+      { transform: `translate(0, 0)` },
+      { transform: `translate(${drift}px, ${window.innerHeight + 100}px)` }
+    ],
+    {
+      duration: duration * 1000,
+      easing: "linear"
+    }
+  );
+
+  container.appendChild(name);
+
+  // Remove after animation
+  setTimeout(() => {
+    name.remove();
+  }, duration * 1000);
+}
+
+// Spawn names continuously
+setInterval(createFloatingName, 2500);
+</script>
 
 </body>
 
