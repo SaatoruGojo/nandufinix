@@ -266,6 +266,57 @@ body {
   white-space: nowrap;
   animation-timing-function: linear;
 }
+.milestones {
+  margin: 50px 0 20px;
+  padding: 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #020617, #1e293b);
+  border: 1px solid #334155;
+  box-shadow: 0 0 20px rgba(37,99,235,0.25);
+  text-align: left;
+}
+
+.milestones h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #facc15;
+  text-align: center;
+}
+
+.milestone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  border: 1px solid #334155;
+  transition: 0.3s;
+}
+
+.milestone-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(147,51,234,0.4);
+}
+
+.milestone-item .count {
+  font-weight: bold;
+  color: #a5b4fc;
+}
+
+.milestone-item .date {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.milestone-note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #cbd5f5;
+  text-align: center;
+}
 
 
 @keyframes floatAround {
@@ -494,6 +545,41 @@ function createFloatingName() {
 setInterval(createFloatingName, 2500);
 </script>
 
+
+
+<section class="milestones">
+  <h2>🏆 Channel Milestones</h2>
+
+  <div class="milestone-item">
+    <span class="count">100 Subs</span>
+    <span class="date">8 May 2025</span>
+  </div>
+
+  <div class="milestone-item">
+    <span class="count">500 Subs</span>
+    <span class="date">26 July 2025</span>
+  </div>
+
+  <div class="milestone-item">
+    <span class="count">1,000 Subs</span>
+    <span class="date">15 August 2025</span>
+  </div>
+
+  <div class="milestone-item">
+    <span class="count">2,000 Subs</span>
+    <span class="date">24 November 2025</span>
+  </div>
+
+  <p class="milestone-note">
+    Every milestone represents late nights, grind, and community support ❤️
+  </p>
+</section>
+
+
+
+
+
+  
 </body>
 
  <script>
