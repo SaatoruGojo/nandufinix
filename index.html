@@ -321,6 +321,32 @@ body {
   font-size: 20px;
   color: #f472b6;
 }
+  .supporters-marquee{
+    overflow:hidden;
+    white-space:nowrap;
+    margin-top:20px;
+}
+
+.track{
+    display:inline-flex;
+    gap:25px;
+    animation:scroll 18s linear infinite;
+}
+
+.track span{
+    padding:10px 18px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#2563eb,#9333ea);
+    font-weight:600;
+    color:#fff;
+    box-shadow:0 0 15px rgba(147,51,234,.5);
+}
+
+@keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+}
+  
 
 .contact-text {
   font-size: 14px;
@@ -456,12 +482,21 @@ body {
   <div class="supporters-box">
   <h3>🏆 Hall of Fame Supporters</h3>
 
-<div class="supporters-list">
-    <span class="supporter">💖 Pip</span>
-    <span class="supporter">💖 Malayakumarnaik</span>
-    <span class="supporter">💖 Darshan</span>
-    <span class="supporter">💖 Duryodhan</span>
-    <span class="supporter">💖 Chirag</span>
+<div class="supporters-marquee">
+    <div class="track">
+        <span>💖 Pip</span>
+        <span>💖 Malayakumarnaik</span>
+        <span>💖 Darshan</span>
+        <span>💖 Duryodhan</span>
+        <span>💖 Chirag</span>
+
+        <!-- duplicate for seamless loop -->
+        <span>💖 Pip</span>
+        <span>💖 Malayakumarnaik</span>
+        <span>💖 Darshan</span>
+        <span>💖 Duryodhan</span>
+        <span>💖 Chirag</span>
+    </div>
 </div>
 
   <p class="supporter-note">
