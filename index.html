@@ -1,203 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NanduFinix — MLBB Streamer & Tournament Host</title>
-  <meta name="description" content="NanduFinix — Mobile Legends streamer and host of FinixArena community tournaments. Watch live, join the Discord, compete in MLBB tournaments with real prize pools." />
-  <meta property="og:title" content="🔥 NanduFinix — Mtt Kr Lala" />
-  <meta property="og:description" content="MLBB streamer • FinixArena tournament host • Join the community" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nandufinix.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SBZQKEKD0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5SBZQKEKD0');
+  </script>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="NanduFinix is an Indian MLBB gaming streamer. Official website — YouTube, Kick, Instagram, Discord, donations, and FinixArena community tournaments.">
+  <meta name="keywords" content="nandufinix, mlbb streamer, mobile legends, gaming streamer, moba gamer, indian streamer, johnson main, finixarena">
+  <meta name="author" content="NanduFinix">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nandufinix.com/">
+
+  <meta property="og:title" content="NanduFinix — MLBB Streamer | Official Website">
+  <meta property="og:description" content="MLBB Streamer • YouTube • Kick • Instagram • Discord • Support the journey">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nandufinix.com">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="NanduFinix — MLBB Streamer">
+  <meta name="twitter:description" content="Streams, community, giveaways & FinixArena tournaments.">
+
+  <title>NanduFinix | MLBB Streamer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #09090b;
-      --card: rgba(24, 24, 27, 0.7);
-      --border: #27272a;
+      --bg: #0b0b10;
+      --ink: #0a0a0e;
+      --card: #131318;
+      --line: #26262e;
       --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --fire-1: #fb923c;
-      --fire-2: #f87171;
-      --fire-3: #facc15;
+      --muted: #9d9da8;
+      --indigo: #6366f1;
+      --violet: #8b5cf6;
+      --pink: #ec4899;
+      --yellow: #fde047;
+      --orange: #f97316;
+      --green: #22c55e;
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; overflow-x: hidden;
+      background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 22px 22px;
     }
-    /* ===== background orbs + grid ===== */
-    .bg-wrap { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .bg-wrap::before {
-      content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%;
-      background: rgba(249, 115, 22, 0.10); filter: blur(110px);
-      top: -140px; left: 8%; animation: float1 10s ease-in-out infinite;
-    }
-    .bg-wrap::after {
-      content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
-      background: rgba(139, 92, 246, 0.09); filter: blur(110px);
-      bottom: -120px; right: 5%; animation: float2 13s ease-in-out infinite;
-    }
-    .grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
-      -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
-    }
-    @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px, 30px) scale(1.1); } }
-    @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px, -40px) scale(1.12); } }
+    ::selection { background: var(--yellow); color: #000; }
 
-    .content { position: relative; z-index: 1; flex: 1; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 
-    /* ===== hero ===== */
-    .hero {
-      max-width: 900px; margin: 0 auto; padding: 90px 20px 60px; text-align: center;
+    /* ===== ANNOUNCEMENT ===== */
+    .announcement {
+      position: fixed; top: 12px; left: 50%; transform: translateX(-50%) rotate(-1deg);
+      background: var(--yellow); color: #000; padding: 10px 18px;
+      border: 2px solid #000; border-radius: 12px;
+      box-shadow: 4px 4px 0 #000;
+      display: flex; align-items: center; gap: 12px; font-size: 0.85rem; font-weight: 800;
+      z-index: 9999; white-space: nowrap;
     }
-    .badge {
-      display: inline-block; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
-      font-weight: 800; color: var(--fire-1); border: 1px solid rgba(249,115,22,0.35);
-      background: rgba(249,115,22,0.06); border-radius: 999px; padding: 7px 18px; margin-bottom: 26px;
-    }
-    .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; line-height: 1.05; }
-    .hero h1 .fire {
-      background: linear-gradient(90deg, var(--fire-1), var(--fire-2), var(--fire-3));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .tagline {
-      margin-top: 18px; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; font-style: italic;
-      color: var(--fire-3); text-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
-    }
-    .hero p.sub { margin-top: 14px; color: var(--muted); font-size: 1rem; }
-    .cta-row { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-block; padding: 15px 28px; border-radius: 14px; font-weight: 800;
-      text-decoration: none; font-size: 1rem; transition: all 0.2s ease;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-fire {
-      background: linear-gradient(90deg, #ea580c, #f59e0b); color: #fff;
-      box-shadow: 0 8px 30px -8px rgba(234, 88, 12, 0.6);
-    }
-    .btn-ghost { background: rgba(39,39,42,0.8); color: var(--text); border: 1px solid #3f3f46; }
-    .btn-discord { background: #5865f2; color: #fff; box-shadow: 0 8px 30px -8px rgba(88, 101, 242, 0.6); }
-    .btn-fire:hover { box-shadow: 0 12px 40px -8px rgba(234, 88, 12, 0.8); }
+    .announcement a { color: #000; text-decoration: underline; font-weight: 900; }
+    .announcement button { background: #000; color: var(--yellow); border: none; cursor: pointer; font-size: 13px; border-radius: 6px; padding: 2px 8px; font-weight: 900; }
 
-    /* ===== link cards ===== */
-    .section-title {
-      text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--muted); font-weight: 800; margin: 30px 0 8px;
+    /* ===== HERO ===== */
+    .hero { text-align: center; padding: 90px 0 40px; position: relative; }
+    .avatar-ring {
+      width: 148px; height: 148px; margin: 0 auto; position: relative;
     }
-    .accent { width: 64px; height: 2px; margin: 0 auto 40px; background: linear-gradient(90deg, var(--fire-1), transparent); }
-    .cards {
-      max-width: 1000px; margin: 0 auto; padding: 0 20px 30px;
-      display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .avatar-ring::before {
+      content: ""; position: absolute; inset: -6px; border-radius: 50%;
+      border: 3px dashed var(--indigo);
+      animation: spin 14s linear infinite;
     }
-    .card {
-      display: block; text-decoration: none; background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 26px; transition: all 0.25s ease; position: relative; overflow: hidden;
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar {
+      width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--line);
+      background: linear-gradient(135deg, var(--indigo), var(--pink));
+      box-shadow: 8px 8px 0 rgba(99, 102, 241, 0.35);
     }
-    .card:hover { transform: translateY(-5px); border-color: rgba(249, 115, 22, 0.55); box-shadow: 0 0 30px -10px rgba(249, 115, 22, 0.4); }
-    .card .icon { font-size: 2.2rem; }
-    .card h3 { margin-top: 12px; font-size: 1.15rem; font-weight: 800; }
-    .card p { margin-top: 8px; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
-    .card .go { display: inline-block; margin-top: 14px; font-size: 0.82rem; font-weight: 700; color: var(--fire-1); }
-    .card.featured {
-      background: linear-gradient(160deg, rgba(234, 88, 12, 0.12), rgba(24, 24, 27, 0.85));
-      border-color: rgba(249, 115, 22, 0.45);
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .sticker {
+      display: inline-block; background: var(--yellow); color: #000;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-style: italic;
+      font-size: clamp(1.05rem, 3.5vw, 1.45rem);
+      padding: 8px 20px; border: 2px solid #000; border-radius: 10px;
+      box-shadow: 5px 5px 0 #000;
+      transform: rotate(-2deg);
+      margin-top: 24px;
     }
-    .card.featured:hover { border-color: var(--fire-1); }
-    .card .tag {
-      position: absolute; top: 18px; right: 18px; font-size: 10px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em; color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 999px; padding: 4px 10px;
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 10vw, 5.2rem); font-weight: 700; letter-spacing: -0.03em;
+      margin-top: 18px; line-height: 1;
+    }
+    .hero h1 .n { color: var(--text); }
+    .hero h1 .f {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--violet);
+      text-shadow: 6px 6px 0 rgba(139, 92, 246, 0.35);
+    }
+    .role-chips { margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .chip {
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 7px 14px; border-radius: 999px; border: 2px solid var(--line);
+      background: var(--card); color: var(--muted);
+    }
+    .chip.on { border-color: var(--green); color: var(--green); }
+    .chip.on::before { content: "●"; margin-right: 6px; animation: blink 1.6s infinite; }
+    @keyframes blink { 50% { opacity: 0.3; } }
+
+    /* ===== SOCIAL BRICKS ===== */
+    .bricks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+    .brick {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 800; font-size: 0.98rem;
+      background: var(--card); border: 2px solid var(--line); border-radius: 16px;
+      padding: 18px 14px; transition: all 0.18s ease;
+    }
+    .brick:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--accent, var(--indigo)); border-color: var(--accent, var(--indigo)); }
+    .brick.yt { --accent: #ef4444; }
+    .brick.kick { --accent: #22c55e; }
+    .brick.ig { --accent: #ec4899; }
+    .brick.dc { --accent: #5865f2; }
+    @media (max-width: 520px) { .bricks { grid-template-columns: 1fr; } }
+
+    /* ===== BENTO ===== */
+    .bento { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    .cell {
+      background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 26px;
+      transition: all 0.2s ease; position: relative;
+    }
+    .cell:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 rgba(99, 102, 241, 0.5); border-color: var(--indigo); }
+    .cell.span2 { grid-column: span 2; }
+    .cell-label {
+      position: absolute; top: -12px; left: 20px;
+      background: var(--violet); color: #fff; font-size: 0.65rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      padding: 4px 12px; border-radius: 8px; border: 2px solid #000;
+      transform: rotate(-1.5deg);
+    }
+    .cell-label.gold { background: var(--yellow); color: #000; }
+    .cell-label.pink { background: var(--pink); }
+    .cell-label.orange { background: var(--orange); }
+    .cell-label.green { background: var(--green); }
+    @media (max-width: 680px) {
+      .bento { grid-template-columns: 1fr; }
+      .cell.span2 { grid-column: span 1; }
     }
 
-    /* ===== stats strip ===== */
-    .stats {
-      max-width: 700px; margin: 50px auto 0; padding: 0 20px;
-      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center;
+    /* ===== DONATE CELL ===== */
+    .donate h3 { color: #f9a8d4; font-size: 1.05rem; font-family: 'Space Grotesk', sans-serif; }
+    .donate p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin-top: 10px; }
+    .donate-btn {
+      display: inline-block; margin-top: 16px; padding: 13px 24px;
+      background: var(--pink); color: #fff; font-weight: 900; text-decoration: none;
+      border: 2px solid #000; border-radius: 12px; box-shadow: 4px 4px 0 #000;
+      transition: all 0.15s ease; font-size: 0.92rem;
     }
-    .stat b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--fire-3); }
-    .stat span { font-size: 0.8rem; color: var(--muted); }
+    .donate-btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
+    .donate-note { margin-top: 12px; font-size: 0.7rem; color: #71717a; }
 
-    /* ===== footer ===== */
-    footer {
-      border-top: 1px solid var(--border); margin-top: 80px; padding: 28px 20px; text-align: center;
-      color: #71717a; font-size: 0.85rem;
-    }
-    footer b { color: var(--text); }
-    footer .disc { color: #8b8bf5; text-decoration: none; }
+    /* ===== ABOUT CELL ===== */
+    .about h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; margin-bottom: 10px; color: #c4b5fd; }
+    .about p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.75; }
+    .about b { color: #e9d5ff; }
 
-    @media (max-width: 640px) {
-      .hero { padding-top: 60px; }
-      .stats { gap: 24px; }
+    /* ===== MILESTONES ===== */
+    .miles h3 { font-family: 'Space Grotesk', sans-serif; color: var(--yellow); font-size: 1.05rem; margin-bottom: 16px; }
+    .ms {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--ink); border: 2px solid var(--line); border-radius: 12px;
+      padding: 12px 15px; margin-bottom: 9px; transition: 0.15s;
     }
+    .ms:hover { transform: translateX(4px); border-color: var(--yellow); }
+    .ms .count { font-weight: 900; color: #fde047; font-family: 'Space Grotesk', sans-serif; }
+    .ms .date { font-size: 0.8rem; color: var(--muted); }
+    .ms-note { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 12px; }
+
+    /* ===== SUPPORTERS ===== */
+    .sup-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .sup {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); border: 2px solid var(--line); border-radius: 999px;
+      padding: 9px 16px; font-weight: 800; font-size: 0.9rem; transition: all 0.15s ease;
+    }
+    .sup:hover { transform: scale(1.06) rotate(-1deg); }
+    .sup.gold { background: linear-gradient(135deg, var(--yellow), #fb923c); color: #000; border-color: #000; box-shadow: 3px 3px 0 #000; }
+    .sup.silver { background: #d4d4d8; color: #000; border-color: #000; box-shadow: 3px 3px 0 #000; }
+    .sup-note { margin-top: 14px; font-size: 0.8rem; color: var(--muted); }
+
+    /* ===== FINIX CARD ===== */
+    .finix { border-color: rgba(249, 115, 22, 0.6); background: linear-gradient(160deg, rgba(249, 115, 22, 0.10), var(--card)); }
+    .finix:hover { box-shadow: 7px 7px 0 rgba(249, 115, 22, 0.55); border-color: var(--orange); }
+    .finix h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; }
+    .finix h3 span { color: var(--orange); }
+    .finix p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-top: 10px; }
+    .finix .feats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .feat {
+      font-size: 0.72rem; font-weight: 800; color: #fdba74;
+      border: 2px solid rgba(249, 115, 22, 0.4); border-radius: 999px; padding: 5px 12px;
+    }
+    .finix-btn {
+      display: inline-block; margin-top: 18px; padding: 13px 26px;
+      background: var(--orange); color: #fff; font-weight: 900; text-decoration: none;
+      border: 2px solid #000; border-radius: 12px; box-shadow: 4px 4px 0 #000;
+      transition: all 0.15s ease; font-size: 0.92rem;
+    }
+    .finix-btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
+
+    /* ===== REELS ===== */
+    .reels { display: grid; grid-template-columns: 1fr; gap: 15px; }
+    .reel-box { border-radius: 16px; overflow: hidden; border: 2px solid var(--line); background: var(--ink); }
+    @media (min-width: 700px) { .reels { grid-template-columns: 1fr 1fr; } }
+
+    /* ===== CONTACT ===== */
+    .contact { text-align: center; }
+    .contact h3 { font-family: 'Space Grotesk', sans-serif; color: #f9a8d4; font-size: 1.05rem; }
+    .contact p { color: var(--muted); font-size: 0.9rem; margin: 10px 0 16px; }
+    .mail {
+      display: inline-block; font-weight: 900; color: #fff; text-decoration: none;
+      background: var(--indigo); border: 2px solid #000; border-radius: 12px;
+      padding: 13px 24px; box-shadow: 4px 4px 0 #000; transition: all 0.15s; font-size: 0.92rem;
+    }
+    .mail:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; background: var(--violet); }
+
+    /* ===== MARQUEE ===== */
+    .marquee {
+      overflow: hidden; white-space: nowrap; margin: 60px -20px 0;
+      border-top: 2px solid var(--line); border-bottom: 2px solid var(--line);
+      background: var(--card); transform: rotate(-0.5deg); padding: 14px 0;
+    }
+    .marquee .track { display: inline-flex; gap: 40px; animation: scroll 22s linear infinite; }
+    .marquee span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--muted); font-size: 0.95rem; }
+    .marquee b { color: var(--yellow); }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 70px; padding: 28px 20px; text-align: center;
+      border-top: 2px solid var(--line); color: #71717a; font-size: 0.82rem;
+    }
+    .footer a { color: #a78bfa; text-decoration: none; font-weight: 700; }
+
+    /* ===== FLOATING SUPPORTERS ===== */
+    #floating-supporters { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+    .floating-name { position: absolute; top: -50px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; opacity: 0.14; white-space: nowrap; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "NanduFinix",
+    "url": "https://nandufinix.com",
+    "sameAs": [
+      "https://www.youtube.com/@NanduFinix",
+      "https://www.instagram.com/nanduvibe",
+      "https://kick.com/heyitsnandu"
+    ],
+    "jobTitle": "MLBB Gaming Streamer",
+    "description": "Indian MLBB mobile streamer and gaming content creator. Hosts FinixArena community tournaments."
+  }
+  </script>
 </head>
 <body>
-  <div class="bg-wrap"><div class="grid-bg"></div></div>
+<div id="floating-supporters"></div>
 
-  <div class="content">
-    <section class="hero">
-      <p class="badge">MLBB Streamer • Tournament Host</p>
-      <h1>🔥 <span class="fire">NanduFinix</span></h1>
-      <p class="tagline">"Mtt Kr Lala" 😤</p>
-      <p class="sub">I host Mobile Legends community tournaments with real prize pools — and stream every bit of the chaos live.</p>
-      <div class="cta-row">
-        <a class="btn btn-fire" href="https://play.nandufinix.com">🏆 Play Tournaments</a>
-        <a class="btn btn-discord" href="https://discord.gg/GYFp96Xd2" target="_blank" rel="noopener">💬 Join Discord</a>
-        <!-- 🔴 REPLACE with your YouTube/Twitch channel URL -->
-        <a class="btn btn-ghost" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">▶ Watch Live</a>
+<div id="announcement" class="announcement">
+  <span>🎁 Giveaway Live — Click to Join</span>
+  <a id="giveawayLink" href="#" target="_blank">Join</a>
+  <button onclick="closeAnnouncement()">✖</button>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero wrap">
+  <div class="avatar-ring">
+    <div class="avatar"><img src="profile.jpg" alt="NanduFinix — MLBB Streamer"></div>
+  </div>
+  <div><span class="sticker">"Mtt Kr Lala" 😤</span></div>
+  <h1><span class="n">NANDU</span><span class="f">FINIX</span></h1>
+  <div class="role-chips">
+    <span class="chip on">Streaming Tonight</span>
+    <span class="chip">MLBB • Johnson Main</span>
+    <span class="chip">MTech AI</span>
+  </div>
+</header>
+
+<!-- ===== SOCIAL BRICKS ===== -->
+<div class="wrap">
+  <div class="bricks">
+    <a class="brick yt" href="https://www.youtube.com/@NanduFinix" target="_blank" rel="noopener">📺 YouTube</a>
+    <a class="brick kick" href="https://kick.com/heyitsnandu" target="_blank" rel="noopener">💚 Kick Live</a>
+    <a class="brick ig" href="https://www.instagram.com/nanduvibe" target="_blank" rel="noopener">📸 Instagram</a>
+    <a class="brick dc" href="https://discord.gg/fm7QsEKTMC" target="_blank" rel="noopener">💬 Discord</a>
+  </div>
+</div>
+
+<!-- ===== BENTO GRID ===== -->
+<main class="wrap" style="margin-top:18px;">
+  <div class="bento">
+
+    <!-- Donation -->
+    <div class="cell donate">
+      <span class="cell-label pink">Support The Grind</span>
+      <h3>💖 Fuel The Streams</h3>
+      <p>Every donation upgrades stream quality, funds giveaways, and keeps late-night MLBB chaos alive. Thank you ❤️</p>
+      <a class="donate-btn" href="https://tipsonstream.in/tip/nandufinix" target="_blank" rel="noopener">Donate On Stream</a>
+      <div class="donate-note">Secure • Instant TTS on Stream • Direct Support</div>
+    </div>
+
+    <!-- About -->
+    <div class="cell about">
+      <span class="cell-label">Who Is NanduFinix?</span>
+      <h3>The Guy Behind The Screen</h3>
+      <p>
+        Indian <b>MLBB funny night streamer</b> — ranked grinds, hero matches, pure entertainment.
+        Currently pursuing <b>MTech in Artificial Intelligence</b>, permanently a <b>Johnson main</b>.
+        Streams regularly, runs giveaways, and builds a friendly gaming community on Discord.
+      </p>
+    </div>
+
+    <!-- Milestones -->
+    <div class="cell miles">
+      <span class="cell-label gold">Milestones</span>
+      <h3>🏆 The Climb So Far</h3>
+      <div class="ms"><span class="count">100 Subs</span><span class="date">8 May 2025</span></div>
+      <div class="ms"><span class="count">500 Subs</span><span class="date">26 July 2025</span></div>
+      <div class="ms"><span class="count">1,000 Subs</span><span class="date">15 Aug 2025</span></div>
+      <div class="ms"><span class="count">2,000 Subs</span><span class="date">24 Nov 2025</span></div>
+      <p class="ms-note">Every milestone = late nights, grind & community love ❤️</p>
+    </div>
+
+    <!-- Supporters -->
+    <div class="cell">
+      <span class="cell-label gold">Hall of Fame</span>
+      <h3 style="font-family:'Space Grotesk';font-size:1.05rem;margin-bottom:14px;">👑 The Legends</h3>
+      <div class="sup-list">
+        <span class="sup gold">💖 Pip</span>
+        <span class="sup gold">👑 Malayakumarnaik</span>
+        <span class="sup silver">⭐ Darshan</span>
+        <span class="sup silver">🔥 Dhuryodhan</span>
+        <span class="sup">❤️ Chirag</span>
+        <span class="sup">🚀 MaSood</span>
       </div>
-    </section>
-
-    <p class="section-title">Where To Find Me</p>
-    <div class="accent"></div>
-
-    <div class="cards">
-      <a class="card featured" href="https://play.nandufinix.com">
-        <span class="tag">FinixArena</span>
-        <p class="icon">🏆</p>
-        <h3>FinixArena Tournaments</h3>
-        <p>My official tournament platform. 1v1 duels & 5v5 team wars, MLBB — free registration, Discord login, brackets & room details on autopilot.</p>
-        <span class="go">Enter the arena →</span>
-      </a>
-      <a class="card" href="https://discord.gg/GYFp96Xd2" target="_blank" rel="noopener">
-        <p class="icon">💬</p>
-        <h3>Discord Community</h3>
-        <p>Tournament announcements, find teammates, talk strats, and hang with the squad between streams.</p>
-        <span class="go">Join the server →</span>
-      </a>
-      <!-- 🔴 REPLACE social URLs below -->
-      <a class="card" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
-        <p class="icon">▶️</p>
-        <h3>Streams & Videos</h3>
-        <p>Live MLBB gameplay, tournament casting, prize distributions and pure Lala energy.</p>
-        <span class="go">Watch now →</span>
-      </a>
+      <p class="sup-note">Thank you for keeping the stream alive ❤️</p>
     </div>
 
-    <div class="stats">
-      <div class="stat"><b>🔥</b><span>FinixArena</span></div>
-      <div class="stat"><b>🏆</b><span>Real Prize Pools</span></div>
-      <div class="stat"><b>🎮</b><span>MLBB 1v1 & 5v5</span></div>
-      <div class="stat"><b>FREE</b><span>To Compete</span></div>
+    <!-- FINIX ARENA -->
+    <div class="cell finix span2">
+      <span class="cell-label orange">Also From Me</span>
+      <h3>I also host <span>MLBB Tournaments</span> 🔥</h3>
+      <p>
+        When I'm not streaming, I run community tournaments on my own platform — <b>FinixArena</b>.
+        1v1 duels, 5v5 full team wars, real prize pools, free entry. And yes — "Mtt Kr Lala" applies there too 😤
+      </p>
+      <div class="feats">
+        <span class="feat">🆓 Free Entry</span>
+        <span class="feat">🥇 Real Prizes</span>
+        <span class="feat">⚔️ 1v1 & 5v5</span>
+        <span class="feat">📊 Live Brackets</span>
+      </div>
+      <a class="finix-btn" href="https://play.nandufinix.com">🏆 Enter FinixArena →</a>
     </div>
+
+    <!-- REELS (uncomment to enable) -->
+    <!--
+    <div class="cell span2">
+      <span class="cell-label pink">Latest Reels</span>
+      <div class="reels" style="margin-top:14px;">
+        <div class="reel-box"><iframe src="https://www.instagram.com/reel/DTrxlp2AHKL/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>
+        <div class="reel-box"><iframe src="https://www.instagram.com/reel/DTeoBoyAESC/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>
+        <div class="reel-box"><iframe src="https://www.instagram.com/reel/DTHpbtogFVu/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>
+        <div class="reel-box"><iframe src="https://www.instagram.com/reel/DTM7JVogAbj/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>
+      </div>
+    </div>
+    -->
+
+    <!-- Contact -->
+    <div class="cell contact span2">
+      <span class="cell-label pink">Business Only</span>
+      <h3>📩 Contact & Collaborations</h3>
+      <p>Brand deals, sponsorships or professional inquiries — hit the mail.</p>
+      <a class="mail" href="mailto:nandubide27@gmail.com">nandubide27@gmail.com</a>
+    </div>
+
   </div>
 
-  <footer>
-    🔥 <b>NanduFinix</b> • <a class="disc" href="https://play.nandufinix.com">play.nandufinix.com</a><br/><br/>
-    Community tournaments — not affiliated with Moonton. Play hard, stay respectful. 🎮
-  </footer>
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="track">
+      <span>💖 <b>Pip</b></span><span>👑 <b>Malayakumarnaik</b></span><span>⭐ <b>Darshan</b></span><span>🔥 <b>Dhuryodhan</b></span><span>❤️ <b>Chirag</b></span><span>🚀 <b>MaSood</b></span>
+      <span>💖 <b>Pip</b></span><span>👑 <b>Malayakumarnaik</b></span><span>⭐ <b>Darshan</b></span><span>🔥 <b>Dhuryodhan</b></span><span>❤️ <b>Chirag</b></span><span>🚀 <b>MaSood</b></span>
+    </div>
+  </div>
+</main>
+
+<div class="footer wrap">
+  © 2026 NanduFinix • All Rights Reserved<br/><br/>
+  🔥 Also check: <a href="https://play.nandufinix.com">FinixArena — my tournament platform</a>
+</div>
+
+<script>
+const supporters = [
+  "PIP 💖",
+  "Malayakumarnaik 👑",
+  "Darshan ⭐",
+  "Dhuryodhan 🔥",
+  "Chirag ❤️",
+  "MaSood 🚀"
+];
+
+const container = document.getElementById("floating-supporters");
+
+function createFloatingName() {
+  const name = document.createElement("div");
+  name.className = "floating-name";
+  name.innerText = supporters[Math.floor(Math.random() * supporters.length)];
+
+  name.style.left = Math.random() * window.innerWidth + "px";
+
+  const duration = 20 + Math.random() * 20;
+  const drift = (Math.random() - 0.5) * 200;
+
+  name.animate(
+    [
+      { transform: "translate(0, 0)" },
+      { transform: `translate(${drift}px, ${window.innerHeight + 100}px)` }
+    ],
+    { duration: duration * 1000, easing: "linear" }
+  );
+
+  container.appendChild(name);
+  setTimeout(() => name.remove(), duration * 1000);
+}
+
+setInterval(createFloatingName, 2500);
+</script>
+
+<script>
+const giveawayActive = false; // 👈 change only this
+const giveawayURL = "https://instagram.com/yourreel";
+
+const announcement = document.getElementById("announcement");
+const giveawayLink = document.getElementById("giveawayLink");
+
+if (!giveawayActive || localStorage.getItem("announcementClosed") === "yes") {
+  announcement.style.display = "none";
+} else {
+  giveawayLink.href = giveawayURL;
+}
+
+function closeAnnouncement() {
+  announcement.style.display = "none";
+  localStorage.setItem("announcementClosed", "yes");
+}
+</script>
+
 </body>
 </html>
