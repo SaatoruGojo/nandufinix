@@ -1,712 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5SBZQKEKD0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NanduFinix — MLBB Streamer & Tournament Host</title>
+  <meta name="description" content="NanduFinix — Mobile Legends streamer and host of FinixArena community tournaments. Watch live, join the Discord, compete in MLBB tournaments with real prize pools." />
+  <meta property="og:title" content="🔥 NanduFinix — Mtt Kr Lala" />
+  <meta property="og:description" content="MLBB streamer • FinixArena tournament host • Join the community" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nandufinix.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #09090b;
+      --card: rgba(24, 24, 27, 0.7);
+      --border: #27272a;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --fire-1: #fb923c;
+      --fire-2: #f87171;
+      --fire-3: #facc15;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    /* ===== background orbs + grid ===== */
+    .bg-wrap { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .bg-wrap::before {
+      content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(249, 115, 22, 0.10); filter: blur(110px);
+      top: -140px; left: 8%; animation: float1 10s ease-in-out infinite;
+    }
+    .bg-wrap::after {
+      content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      background: rgba(139, 92, 246, 0.09); filter: blur(110px);
+      bottom: -120px; right: 5%; animation: float2 13s ease-in-out infinite;
+    }
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
+    }
+    @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px, 30px) scale(1.1); } }
+    @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px, -40px) scale(1.12); } }
 
-  gtag('config', 'G-5SBZQKEKD0');
-</script>
-  
-  <link rel="icon" type="image/png" href="favicon.png">
+    .content { position: relative; z-index: 1; flex: 1; }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    /* ===== hero ===== */
+    .hero {
+      max-width: 900px; margin: 0 auto; padding: 90px 20px 60px; text-align: center;
+    }
+    .badge {
+      display: inline-block; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+      font-weight: 800; color: var(--fire-1); border: 1px solid rgba(249,115,22,0.35);
+      background: rgba(249,115,22,0.06); border-radius: 999px; padding: 7px 18px; margin-bottom: 26px;
+    }
+    .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; line-height: 1.05; }
+    .hero h1 .fire {
+      background: linear-gradient(90deg, var(--fire-1), var(--fire-2), var(--fire-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .tagline {
+      margin-top: 18px; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; font-style: italic;
+      color: var(--fire-3); text-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
+    }
+    .hero p.sub { margin-top: 14px; color: var(--muted); font-size: 1rem; }
+    .cta-row { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 15px 28px; border-radius: 14px; font-weight: 800;
+      text-decoration: none; font-size: 1rem; transition: all 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-fire {
+      background: linear-gradient(90deg, #ea580c, #f59e0b); color: #fff;
+      box-shadow: 0 8px 30px -8px rgba(234, 88, 12, 0.6);
+    }
+    .btn-ghost { background: rgba(39,39,42,0.8); color: var(--text); border: 1px solid #3f3f46; }
+    .btn-discord { background: #5865f2; color: #fff; box-shadow: 0 8px 30px -8px rgba(88, 101, 242, 0.6); }
+    .btn-fire:hover { box-shadow: 0 12px 40px -8px rgba(234, 88, 12, 0.8); }
 
-<meta name="description" content="Nandufinix is an MLBB gaming streamer. Official website with YouTube, Instagram, Discord and donation links.">
-<meta name="keywords" content="nandufinix, mlbb streamer, mobile legends, gaming streamer, moba gamer">
-<meta name="author" content="Nandufinix">
+    /* ===== link cards ===== */
+    .section-title {
+      text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); font-weight: 800; margin: 30px 0 8px;
+    }
+    .accent { width: 64px; height: 2px; margin: 0 auto 40px; background: linear-gradient(90deg, var(--fire-1), transparent); }
+    .cards {
+      max-width: 1000px; margin: 0 auto; padding: 0 20px 30px;
+      display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .card {
+      display: block; text-decoration: none; background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 26px; transition: all 0.25s ease; position: relative; overflow: hidden;
+    }
+    .card:hover { transform: translateY(-5px); border-color: rgba(249, 115, 22, 0.55); box-shadow: 0 0 30px -10px rgba(249, 115, 22, 0.4); }
+    .card .icon { font-size: 2.2rem; }
+    .card h3 { margin-top: 12px; font-size: 1.15rem; font-weight: 800; }
+    .card p { margin-top: 8px; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+    .card .go { display: inline-block; margin-top: 14px; font-size: 0.82rem; font-weight: 700; color: var(--fire-1); }
+    .card.featured {
+      background: linear-gradient(160deg, rgba(234, 88, 12, 0.12), rgba(24, 24, 27, 0.85));
+      border-color: rgba(249, 115, 22, 0.45);
+    }
+    .card.featured:hover { border-color: var(--fire-1); }
+    .card .tag {
+      position: absolute; top: 18px; right: 18px; font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em; color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 999px; padding: 4px 10px;
+    }
 
-<meta property="og:title" content="Nandufinix Official Website">
-<meta property="og:description" content="MLBB Streamer | YouTube | Instagram | Discord | Donate">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://nandufinix.com">
+    /* ===== stats strip ===== */
+    .stats {
+      max-width: 700px; margin: 50px auto 0; padding: 0 20px;
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center;
+    }
+    .stat b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--fire-3); }
+    .stat span { font-size: 0.8rem; color: var(--muted); }
 
-<title>Nandufinix | MLBB Streamer</title>
+    /* ===== footer ===== */
+    footer {
+      border-top: 1px solid var(--border); margin-top: 80px; padding: 28px 20px; text-align: center;
+      color: #71717a; font-size: 0.85rem;
+    }
+    footer b { color: var(--text); }
+    footer .disc { color: #8b8bf5; text-decoration: none; }
 
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: white;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.container {
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  margin: auto;
-  background: linear-gradient(135deg, #2563eb, #9333ea);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 25px rgba(37,99,235,0.6);
-  overflow: hidden;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.logo {
-  font-size: 34px;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-.subtitle {
-  color: #9ca3af;
-  margin-bottom: 30px;
-}
-
-.links-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.link {
-  text-decoration: none;
-  color: white;
-  background: linear-gradient(135deg, #1e293b, #020617);
-  padding: 16px;
-  border-radius: 14px;
-  font-size: 18px;
-  font-weight: 600;
-  border: 1px solid #334155;
-  transition: 0.3s;
-}
-
-.link:hover {
-  background: linear-gradient(135deg, #2563eb, #9333ea);
-  transform: scale(1.04);
-  box-shadow: 0 0 20px rgba(37,99,235,0.6);
-}
-
-.section-title {
-  margin-top: 35px;
-  margin-bottom: 15px;
-  font-size: 18px;
-  color: #cbd5f5;
-  text-align: left;
-}
-
-.reels {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
-
-.reel-box {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #334155;
-  background: #020617;
-}
-
-.footer {
-  margin-top: 35px;
-  font-size: 13px;
-  color: #9ca3af;
-}
-
-.announcement {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #2563eb, #9333ea);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  z-index: 9999;
-  box-shadow: 0 0 15px rgba(37,99,235,0.6);
-}
-
-.announcement a {
-  color: #fff;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.announcement button {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-.donation-box {
-  margin: 30px 0;
-  padding: 20px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #1e293b, #020617);
-  border: 1px solid #334155;
-  box-shadow: 0 0 20px rgba(147,51,234,0.3);
-}
-
-.donation-box h3 {
-  margin-top: 0;
-  color: #f472b6;
-}
-
-.donation-box p {
-  color: #cbd5f5;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.donate-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 14px 24px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #ec4899, #9333ea);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 16px;
-  transition: 0.3s;
-  box-shadow: 0 0 15px rgba(236,72,153,0.6);
-}
-
-.donate-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 25px rgba(236,72,153,0.9);
-}
-
-.donation-note {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #9ca3af;
-}
-
-.supporters-box {
-  background: linear-gradient(135deg, #1a1a1a, #111);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 30px 0;
-  text-align: center;
-}
-
-.supporters-box h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-.supporters-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.supporter {
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  font-size: 14px;
-  transition: transform 0.3s ease;
-}
-
-.supporter:hover {
-  transform: scale(1.1);
-}
-
-.supporter.gold {
-  background: linear-gradient(135deg, gold, orange);
-  color: #000;
-}
-
-.supporter.silver {
-  background: linear-gradient(135deg, #ddd, #aaa);
-  color: #000;
-}
-
-.supporter.bronze {
-  background: linear-gradient(135deg, #cd7f32, #a0522d);
-  color: #fff;
-}
-
-.supporter-note {
-  margin-top: 12px;
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-#floating-supporters {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.floating-name {
-  position: absolute;
-  top: -50px;
-  font-size: 14px;
-  opacity: 0.18;
-  white-space: nowrap;
-  animation-timing-function: linear;
-}
-.milestones {
-  margin: 50px 0 20px;
-  padding: 24px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #020617, #1e293b);
-  border: 1px solid #334155;
-  box-shadow: 0 0 20px rgba(37,99,235,0.25);
-  text-align: left;
-}
-
-.milestones h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 20px;
-  color: #facc15;
-  text-align: center;
-}
-
-.milestone-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0f172a, #020617);
-  border: 1px solid #334155;
-  transition: 0.3s;
-}
-
-.milestone-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(147,51,234,0.4);
-}
-
-.milestone-item .count {
-  font-weight: bold;
-  color: #a5b4fc;
-}
-  .contact {
-  margin: 40px 0 20px;
-  padding: 24px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #020617, #1e293b);
-  border: 1px solid #334155;
-  box-shadow: 0 0 18px rgba(236,72,153,0.25);
-  text-align: center;
-}
-
-.contact h2 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 20px;
-  color: #f472b6;
-}
-  .supporters-marquee{
-    overflow:hidden;
-    white-space:nowrap;
-    margin-top:20px;
-}
-
-.track{
-    display:inline-flex;
-    gap:25px;
-    animation:scroll 18s linear infinite;
-}
-
-.track span{
-    padding:10px 18px;
-    border-radius:999px;
-    background:linear-gradient(135deg,#2563eb,#9333ea);
-    font-weight:600;
-    color:#fff;
-    box-shadow:0 0 15px rgba(147,51,234,.5);
-}
-
-@keyframes scroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
-}
-  
-
-.contact-text {
-  font-size: 14px;
-  color: #cbd5f5;
-  margin-bottom: 14px;
-}
-
-.contact-mail {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #2563eb, #9333ea);
-  box-shadow: 0 0 15px rgba(37,99,235,0.6);
-  transition: 0.3s;
-}
-
-.contact-mail:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(37,99,235,0.9);
-}
-
-
-.milestone-item .date {
-  font-size: 13px;
-  color: #9ca3af;
-}
-
-.milestone-note {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #cbd5f5;
-  text-align: center;
-}
-
-
-@keyframes floatAround {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(150vw);
-  }
-}
-
-  
-/* ===== DESKTOP MAGIC ===== */
-@media (min-width: 768px) {
-
-  .links-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .reels {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-</style>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "NanduFinix",
-  "url": "https://nandufinix.com",
-  "sameAs": [
-    "https://www.youtube.com/@NanduFinix",
-    "https://www.instagram.com/nanduvibe"
-  ],
-  "jobTitle": "MLBB Gaming Streamer",
-  "description": "Indian MLBB mobile streamer and gaming content creator."
-}
-</script>
-
+    @media (max-width: 640px) {
+      .hero { padding-top: 60px; }
+      .stats { gap: 24px; }
+    }
+  </style>
 </head>
 <body>
-<div id="floating-supporters"></div>
+  <div class="bg-wrap"><div class="grid-bg"></div></div>
 
+  <div class="content">
+    <section class="hero">
+      <p class="badge">MLBB Streamer • Tournament Host</p>
+      <h1>🔥 <span class="fire">NanduFinix</span></h1>
+      <p class="tagline">"Mtt Kr Lala" 😤</p>
+      <p class="sub">I host Mobile Legends community tournaments with real prize pools — and stream every bit of the chaos live.</p>
+      <div class="cta-row">
+        <a class="btn btn-fire" href="https://play.nandufinix.com">🏆 Play Tournaments</a>
+        <a class="btn btn-discord" href="https://discord.gg/GYFp96Xd2" target="_blank" rel="noopener">💬 Join Discord</a>
+        <!-- 🔴 REPLACE with your YouTube/Twitch channel URL -->
+        <a class="btn btn-ghost" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">▶ Watch Live</a>
+      </div>
+    </section>
 
-<div id="announcement" class="announcement">
-  <span>🎁 Giveaway Live — Click to Join</span>
-  <a id="giveawayLink" href="#" target="_blank">Join</a>
-  <button onclick="closeAnnouncement()">✖</button>
-</div>
+    <p class="section-title">Where To Find Me</p>
+    <div class="accent"></div>
 
-
-<div class="container">
-
-  <div class="avatar">
-  <img src="profile.jpg" alt="Nandufinix">
-</div>
-
-
-<div class="logo">NanduFinix</div>
-<div class="subtitle">MLBB Streamer • Mobile Legends Bang Bang</div>
-
-
-
-
-
-  
-  <div class="links-grid">
-  <a class="link" href="https://www.youtube.com/@NanduFinix" target="_blank">📺 YouTube Stream</a>
-  <a class="link" href="https://kick.com/heyitsnandu" target="_blank">💚 Kick Live Stream</a>
-  <a class="link" href="https://www.instagram.com/nanduvibe" target="_blank">📸 Instagram</a>
-  <a class="link" href="https://discord.gg/fm7QsEKTMC" target="_blank">💬 Join Discord</a>
-
-</div>
-
-  <div class="donation-box">
-  <h3>💖 Support My MLBB Streaming Journey</h3>
-  <p>
-    Every donation helps me improve my stream quality, content, and giveaways.
-    Thank you for supporting my journey ❤️
-  </p>
-
-  <a class="donate-btn" href="https://tipsonstream.in/tip/nandufinix" target="_blank">
-    Support My Stream
-  </a>
-
-<div class="donation-note">
-  Secure • Instant TTS on Stream • Direct Support ❤️
-</div>
-
-</div>
-
-
-  <div class="supporters-box">
-  <h3>🏆 Hall of Fame Supporters</h3>
-
-<div class="supporters-marquee">
-    <div class="track">
-        <span>💖 Pip</span>
-        <span>💖 Malayakumarnaik</span>
-        <span>💖 Darshan</span>
-        <span>💖 Duryodhan</span>
-        <span>💖 Chirag</span>
-
-        <!-- duplicate for seamless loop -->
-        <span>💖 Pip</span>
-        <span>💖 Malayakumarnaik</span>
-        <span>💖 Darshan</span>
-        <span>💖 Duryodhan</span>
-        <span>💖 Chirag</span>
-    </div>
-</div>
-
-  <p class="supporter-note">
-    Thank you for keeping the stream alive ❤️
-  </p>
-</div>
-
- <!--
-  <div class="section-title">🔥 Latest Reels</div>
-
-  <div class="reels">
-
-    <!-- Instagram Reel Embed 
-
-     <div class="reel-box">
-      <iframe 
-        src="https://www.instagram.com/reel/DTrxlp2AHKL/embed"
-        width="100%" 
-        height="480" 
-        frameborder="0" 
-        scrolling="no" 
-        allowtransparency="true">
-      </iframe>
-    </div>
-   
-    <div class="reel-box">
-      <iframe 
-        src="https://www.instagram.com/reel/DTeoBoyAESC/embed"
-        width="100%" 
-        height="480" 
-        frameborder="0" 
-        scrolling="no" 
-        allowtransparency="true">
-      </iframe>
+    <div class="cards">
+      <a class="card featured" href="https://play.nandufinix.com">
+        <span class="tag">FinixArena</span>
+        <p class="icon">🏆</p>
+        <h3>FinixArena Tournaments</h3>
+        <p>My official tournament platform. 1v1 duels & 5v5 team wars, MLBB — free registration, Discord login, brackets & room details on autopilot.</p>
+        <span class="go">Enter the arena →</span>
+      </a>
+      <a class="card" href="https://discord.gg/GYFp96Xd2" target="_blank" rel="noopener">
+        <p class="icon">💬</p>
+        <h3>Discord Community</h3>
+        <p>Tournament announcements, find teammates, talk strats, and hang with the squad between streams.</p>
+        <span class="go">Join the server →</span>
+      </a>
+      <!-- 🔴 REPLACE social URLs below -->
+      <a class="card" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
+        <p class="icon">▶️</p>
+        <h3>Streams & Videos</h3>
+        <p>Live MLBB gameplay, tournament casting, prize distributions and pure Lala energy.</p>
+        <span class="go">Watch now →</span>
+      </a>
     </div>
 
-    <div class="reel-box">
-      <iframe 
-        src="https://www.instagram.com/reel/DTHpbtogFVu/embed"
-        width="100%" 
-        height="480" 
-        frameborder="0" 
-        scrolling="no" 
-        allowtransparency="true">
-      </iframe>
+    <div class="stats">
+      <div class="stat"><b>🔥</b><span>FinixArena</span></div>
+      <div class="stat"><b>🏆</b><span>Real Prize Pools</span></div>
+      <div class="stat"><b>🎮</b><span>MLBB 1v1 & 5v5</span></div>
+      <div class="stat"><b>FREE</b><span>To Compete</span></div>
     </div>
-
-    <div class="reel-box">
-      <iframe 
-        src="https://www.instagram.com/reel/DTM7JVogAbj/embed"
-        width="100%" 
-        height="480" 
-        frameborder="0" 
-        scrolling="no" 
-        allowtransparency="true">
-      </iframe>
-    </div>
-
-    <!-- Add more reels same way 
-
-  </div>
--->
-  <section class="seo-text">
- <h1>Who is NanduFinix?</h1>
-<p>
-  NanduFinix is an Indian MLBB funny night streamer known for ranked gameplay, hero matches, and entertaining community live streams.
-  He is currently pursuing MTech in Artificial Intelligence and is a Johnson main player in Mobile Legends Bang Bang.
-  NanduFinix streams regularly, interacts with his audience through giveaways, and builds a fun, friendly gaming community on Discord.
-</p>
-
-</section>
-
-<section class="milestones">
-  <h2>🏆 Channel Milestones</h2>
-
-  <div class="milestone-item">
-    <span class="count">100 Subs</span>
-    <span class="date">8 May 2025</span>
   </div>
 
-  <div class="milestone-item">
-    <span class="count">500 Subs</span>
-    <span class="date">26 July 2025</span>
-  </div>
-
-  <div class="milestone-item">
-    <span class="count">1,000 Subs</span>
-    <span class="date">15 August 2025</span>
-  </div>
-
-  <div class="milestone-item">
-    <span class="count">2,000 Subs</span>
-    <span class="date">24 November 2025</span>
-  </div>
-
-  <p class="milestone-note">
-    Every milestone represents late nights, grind, and community support ❤️
-  </p>
-</section>
-
-
-  
-
-  <section class="contact">
-  <h2>📩 Contact & Collaborations</h2>
-
-  <p class="contact-text">
-    For brand collaborations, sponsorships, or professional inquiries,
-    feel free to reach out via email.
-  </p>
-
-  <a class="contact-mail" href="mailto:nandubide27@gmail.com">
-    nandubide27@gmail.com
-  </a>
-</section>
-
-
-  <div class="footer">
-    © 2026 Nandufinix • All Rights Reserved
-  </div>
-
-</div>
-<script>
-const supporters = [
-  "PIP 💖",
-  "Malayakumarnaik 👑",
-  "Darshan ⭐",
-  "Dhuryodhan 🔥",
-  "Chirag ❤️"
-];
-
-const container = document.getElementById("floating-supporters");
-
-function createFloatingName() {
-  const name = document.createElement("div");
-  name.className = "floating-name";
-  name.innerText = supporters[Math.floor(Math.random() * supporters.length)];
-
-  // Random start position
-  const startX = Math.random() * window.innerWidth;
-  name.style.left = startX + "px";
-
-  // Random animation duration
-  const duration = 20 + Math.random() * 20; // 20–40s
-  const drift = (Math.random() - 0.5) * 200; // left/right drift
-
-  name.animate(
-    [
-      { transform: `translate(0, 0)` },
-      { transform: `translate(${drift}px, ${window.innerHeight + 100}px)` }
-    ],
-    {
-      duration: duration * 1000,
-      easing: "linear"
-    }
-  );
-
-  container.appendChild(name);
-
-  // Remove after animation
-  setTimeout(() => {
-    name.remove();
-  }, duration * 1000);
-}
-
-// Spawn names continuously
-setInterval(createFloatingName, 2500);
-</script>
-
-
-
-
-
-
-
-
-
-  
+  <footer>
+    🔥 <b>NanduFinix</b> • <a class="disc" href="https://play.nandufinix.com">play.nandufinix.com</a><br/><br/>
+    Community tournaments — not affiliated with Moonton. Play hard, stay respectful. 🎮
+  </footer>
 </body>
-
- <script>
-const giveawayActive = false; // 👈 change only this
-const giveawayURL = "https://instagram.com/yourreel";
-
-const announcement = document.getElementById("announcement");
-const giveawayLink = document.getElementById("giveawayLink");
-
-if (!giveawayActive || localStorage.getItem("announcementClosed") === "yes") {
-  announcement.style.display = "none";
-} else {
-  giveawayLink.href = giveawayURL;
-}
-
-function closeAnnouncement() {
-  announcement.style.display = "none";
-  localStorage.setItem("announcementClosed", "yes");
-}
-</script>
-
-
-
-
 </html>
